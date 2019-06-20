@@ -1,0 +1,110 @@
+<div *ngIf='loggedIn'>
+  <div id="header">
+    <br/>
+    <span id="heading">Welcome {{name}}</span>
+    <button id='logout' (click)='logout()'>Logout</button>
+    <button id='allinfo' (click)='allinfo()'>All Info</button>
+    <br/>
+    <br/>
+    <br/>
+  </div>
+  <h1 *ngIf="!query">User Information</h1>
+  <h1 *ngIf="query"> Edit User Information </h1>
+  <form [formGroup]='infoForm' (ngSubmit)='onSubmit()'>
+    <label>Name </label>
+    <span *ngIf='submitted && formControls.name.errors'>*</span>
+    <input type="text" placeholder="Enter your name" formControlName='name' />
+    <div class='validator' *ngIf='submitted && formControls.name.errors && formControls.name.errors.required'>Name is required</div>
+    <div class='validator' *ngIf='submitted && formControls.name.errors && formControls.name.errors.minlength'>Name must be longer than 2 characters</div>
+    <br/>
+    <br/>
+    <label>Email ID </label>
+    <span *ngIf='submitted && formControls.emailID.errors'>*</span>
+    <input type="text" placeholder="Enter emailID" formControlName='emailID' />
+    <div class='validator' *ngIf='submitted && formControls.emailID.errors && formControls.emailID.errors.required'>Email ID is required</div>
+    <div class='validator' *ngIf='submitted && formControls.emailID.errors && formControls.emailID.errors.email'>Enter a valid email ID</div>
+    <br/>
+    <br/>
+    <label>Father's name </label>
+    <span *ngIf='submitted && formControls.emailID.errors'>*</span>
+    <input type="text" placeholder="Enter your father's name" formControlName='fatherName' />
+    <div class='validator' *ngIf='submitted && formControls.fatherName.errors && formControls.fatherName.errors.required'>Father's name is required</div>
+    <div class='validator' *ngIf='submitted && formControls.fatherName.errors && formControls.fatherName.errors.minlength'>Name must be longer than 2 characters</div>
+    <br/>
+    <br/>
+    <label>Job profile </label>
+    <span *ngIf='submitted && formControls.jobPost.errors'>*</span>
+    <select formControlName='jobPost'>
+      <option value="" disabled selected hidden>Select</option>
+      <option>Jr. developer</option>
+      <option>Sr. developer</option>
+      <option value="H.R.">H.R.</option>
+      <option value="Designer">Designer</option>
+    </select>
+    <div class='validator' *ngIf='submitted && formControls.jobPost.errors && formControls.jobPost.errors.required'>Select a Job </div>
+    <br/>
+    <br/>
+    <label>Gender </label>
+    <span id="gender" *ngIf='submitted && formControls.gender.errors'>*</span>
+    <br/>
+    <div id="radiodiv">
+      <input class='radioin' type="radio" formControlName='gender' value='Male' />
+      <label id="rlabel1">Male</label>
+      <input class='radioin' type="radio" formControlName='gender' value='Female' />
+      <label id="rlabel1">Female</label>
+      <br/>
+      <br/>
+      <div class='validator' *ngIf='submitted && formControls.gender.errors && formControls.gender.errors.required'>Select your gender.</div>
+      <br/>
+    </div>
+    <div id="hobbies" formGroupName='hobbies'>
+      <label>Hobbies </label>
+      <input id="hobin" type="checkbox" formControlName='music' />Music
+      <input id="hobin" type="checkbox" formControlName='books' />Books
+      <input id="hobin" type="checkbox" formControlName='sports' />Sports
+      <input id="hobin" type="checkbox" formControlName='cycling' />Cycling
+    </div>
+    <br/>
+    <label>Phone No. </label>
+    <span *ngIf='submitted && formControls.phoneNo.errors'>*</span>
+    <input type="text" placeholder="Enter your Phone No" formControlName='phoneNo' />
+    <div class='validator' *ngIf='submitted && formControls.phoneNo.errors && formControls.phoneNo.errors.required'>Phone No. is required</div>
+    <div class='validator' *ngIf='submitted && formControls.phoneNo.errors && formControls.phoneNo.errors.minlength'>Phone No must be longer than 5 characters</div>
+    <br/>
+    <br/>
+    <label>Date of Birth </label>
+    <span *ngIf='submitted && formControls.dob.errors'>*</span>
+    <input type="date" onkeydown="return false" formControlName='dob' data-date="" data-date-format="DD MMMM YYYY" value="2015-08-09"
+    />
+    <div class='validator' *ngIf='submitted && formControls.dob.errors && formControls.dob.errors.required'>Date of birth is required</div>
+    <br/>
+    <br/>
+    <div id="message" *ngIf='submitted && message'>{{message}}</div>
+    <br/>
+    <div id="message" *ngIf='submitted && differentID'>Enter the Email ID used to login.</div>
+    <!-- <input style="display: none" type="file" (change)="onFileChange($event)" #fileInput>
+    <button (click)="fileInput.click()">Select Image</button>
+    <br/>
+    <br/>
+    <span style="color:red;" *ngIf="notImage">{{notImageMessage}}</span>
+    <img id="blah" *ngIf="!notImage" [src]="url || 'http://placehold.it/180'" alt="your image" />
+    <br/>
+    <br/> -->
+    <button type="submit" >Submit</button>
+  </form>
+  <br/>
+  <input style="display: none" type="file" (change)="onFileChange($event)" #fileInput>
+  <button (click)="fileInput.click()">Select Image</button>
+  <br/>
+  <br/>
+  <span style="color:red;" *ngIf="notImage">{{notImageMessage}}</span>
+  <img id="blah" *ngIf="!notImage" [src]="url || 'http://placehold.it/180'" alt="your image" />
+  <br/>
+  <br/>
+  <!-- <button (click)="onUpload()">Upload</button> -->
+  <br/>
+  <br/>
+  <button (click)='addedByMe()'>Info added by {{name}}</button>
+  <br/>
+  <br/>
+</div>

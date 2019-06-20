@@ -1,0 +1,11 @@
+label{
+    margin-left: 10px
+}
+
+button{
+    float: left
+}
+
+button#done{
+    margin-left: 45%
+}

@@ -1,0 +1,130 @@
+<div id="main">
+<div class="container-fluid">
+    <div class="col-md-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+        <button (click)='addNew()'>Add new data</button>
+        <br/>
+        <br/>
+        <div class="row">
+            <br/>
+            <h2 class="col-md-6">Information table</h2>
+            <div class="col-md-2">
+                <br/>
+                <label class="label-control">Rows on page</label>
+                <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
+                    <option [ngValue]="5">5</option>
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="15">15</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <br/>
+                <div class="row">
+                    <label class="col-md-12 label-control">Sort by</label>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <select class="form-control input-sm" [(ngModel)]="sortBy">
+                            <option ngValue="name">Name</option>
+                            <option ngValue="fatherName">Father's Name</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <select class="form-control input-sm" [(ngModel)]="sortOrder">
+                            <option ngValue="asc">Ascending</option>
+                            <option ngValue="desc">Descending</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="panel panel-default">
+            <div class="panel-heading">User information</div>
+            <br/>
+            <div>
+                <table class="table " [mfData]="infodata | dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy"
+                    [(mfSortOrder)]="sortOrder">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="name">Name</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="name">Photo</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="email">Email</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="dob">Date of Birth</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="gender">Gender</mfDefaultSorter>
+                            </th>
+                            <th style="width: 10%">
+                                <mfDefaultSorter by="fatherName">Father's Name</mfDefaultSorter>
+                            </th>
+                            <th style="width: 10%">
+                                <mfDefaultSorter by="jobPost">Job Profile</mfDefaultSorter>
+                            </th>
+                            <th style="width: 10%">
+                                <mfDefaultSorter by="phoneNo">Phone No.</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="hobbies">Hobbies</mfDefaultSorter>
+                            </th>
+                            <th style="width: 10%">
+                                <mfDefaultSorter by="createDate">Information created on</mfDefaultSorter>
+                            </th>
+                            <th style="width: 5%">
+                                <mfDefaultSorter by="role">Role</mfDefaultSorter>
+                            </th>
+                            <th style="width: 10%">
+                                <mfDefaultSorter>Change</mfDefaultSorter>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of mf.data;let i = index " [attr.id]="(i%2?'odd':'even')">
+                            <td>{{item.name}}</td>
+                            <img src="http://localhost:3200/images/{{item.imgName}}" />
+                            <td>{{item.emailID}}</td>
+                            <td>{{item.dob}}</td>
+                            <td>{{item.gender}}</td>
+                            <td>{{item.fatherName}}</td>
+                            <td>{{item.jobPost | uppercase}}</td>
+                            <td>{{item.phoneNo}}</td>
+                            <td>{{item.hobbies}}</td>
+                            <td>{{item.createDate}}</td>
+                            <td>{{item.roles}}</td>
+                            <td>
+                                <div *ngIf="item.createdBy===createdBy">
+                                    <button (click)='edit(item)'>Edit</button>
+                                    <button (click)='delete(item)'>Delete</button>
+                                    <button (click)='editRole(item)'>Edit role</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">
+                                <mfBootstrapPaginator></mfBootstrapPaginator>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <p>{{childText}}</p>
+</div>
+</div>
+<div id="overlay" *ngIf="overlay" >
+    <div id="role">
+        <app-assignrole [overlay]="overlay" [userInfo]="userInfo" (overlayEvent)="overlay=$event"></app-assignrole>
+    </div>
+</div>

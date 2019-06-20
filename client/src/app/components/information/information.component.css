@@ -1,0 +1,112 @@
+span#heading{
+    color: rgb(0, 0, 0);
+    float: left;
+    margin-left: 10px;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+span{
+    color: red;
+}
+span#gender{
+    color: red;
+    margin-right: 320px
+}
+
+
+div {
+    width: 600px;
+    background-color: rgba(255, 255, 255, 0.986);
+    margin: auto;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 10px 10px 2px rgb(160, 157, 157)
+}
+div#header{
+    background-color: darkgreen;
+    box-shadow: none;
+    border-radius: 20px 20px 5px 5px
+} 
+div#message {
+    box-shadow: none;   
+    border-radius: none;
+    color: darkred     
+}
+div#radiodiv{
+    box-shadow: none;    
+    text-align: left;
+    margin-left: 200;
+}
+div.validator {
+    color: crimson;
+    width : 300px;
+    box-shadow: none;
+    text-align: left;
+    margin-left: 300px
+}
+label {
+    color: rgb(174, 0, 255);
+    float: left;
+    margin-left: 150px;
+}
+label#rlabel1{
+    color: blue;
+    text-align: left;
+    margin-left: -130px;
+}
+div#hobbies{
+    width: auto;
+    background-color: rgba(255, 255, 255, 0.986);
+    margin: none;
+    padding: none;
+    border-radius: none;
+    box-shadow: 0px 0px 0px rgb(160, 157, 157)
+}
+input{
+    float : right;
+    margin-right: 140px
+}
+input.radioin{
+    float: left;;
+    margin-left: 300px;
+    margin-right: none
+}
+input#hobin{
+    float: none;
+    margin-right: 0px
+}
+
+select{
+    float: right;
+    margin-right: 210px
+}
+
+h1 {
+    color: brown
+}
+
+button#logout{
+     float: right;
+    margin-right: 30px;
+    background-color: rgb(250, 0, 0);    
+  box-shadow: 5px 5px 2px rgb(105, 0, 0)    
+}
+
+button#allinfo{
+     float: right;
+    margin-right:15px;
+    background-color: rgb(250, 0, 0);    
+  box-shadow: 5px 5px 2px rgb(105, 0, 0)    
+}
+
+button{
+    background-color: rgb(0, 255, 0);
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  box-shadow: 5px 5px 2px rgb(160, 157, 157)
+}
+
